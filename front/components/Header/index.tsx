@@ -25,7 +25,6 @@ export default function Header({
     return (
         <AppShell.Header>
             <Flex justify="space-between" align="center" mih="100%" px="md">
-                12
                 <Burger
                     opened={opened}
                     onClick={toggle}
