@@ -19,7 +19,7 @@ services:
             context: ./back
             dockerfile: Dockerfile
         ports:
-            - "3000:3000"
+            - "3001:3000"
         depends_on:
             - database
         environment:
@@ -32,10 +32,7 @@ services:
             context: ./front
             dockerfile: Dockerfile
         ports:
-            - "3001:3000"
+            - "3000:3000"
         depends_on:
             - backend
-        environment:
-            - NEXT_PUBLIC_SUPABASE_URL=https://fytsfwgcxtlfjaugtwad.supabase.co
-            - NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5dHNmd2djeHRsZmphdWd0d2FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI3MzIzMDYsImV4cCI6MjA0ODMwODMwNn0.NGizuVxMMbbtYMXb-FM_YD4sY4Yoe9XzK6NYp3ify7k
-            - NEXT_PUBLIC_BACKEND_API_URL=http://localhost:3000
+
