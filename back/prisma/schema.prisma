@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  username          String
+  email             String   @unique
+  password          String
+  createdAt         DateTime @default(now())
+  role              Role
+  accessFailedCount Int
+
+  recognitionEvents RecognitionEvent[]
+  feedbackEvents    FeedbackEvent[]    @relation("UserFeedback")
+  adminFeedbacks    FeedbackEvent[]    @relation("AdminFeedback")
+  notifications     Notification[]
+}
+
+model RecognitionEvent {
+  recognitionId     String   @id @default(cuid())
+  userId            String
+  date              DateTime
+  recognitionResult String
+  userEditResult    String
+  hasImageInDb      Boolean
+  imageId           String
+
+  user          User            @relation(fields: [userId], references: [id])
+  notifications Notification[]
+  FeedbackEvent FeedbackEvent[]
+}
+
+model FeedbackEvent {
+  feedbackEventId String  @id @default(cuid())
+  recognitionId   String?
+  feedbackText    String
+  isAnswered      Boolean
+  userId          String
+  adminId         String? @default("")
+  adminResponse   String? @default("")
+
+  recognitionEvent RecognitionEvent? @relation(fields: [recognitionId], references: [recognitionId])
+  user             User              @relation("UserFeedback", fields: [userId], references: [id])
+  admin            User?             @relation("AdminFeedback", fields: [adminId], references: [id])
+  Notification     Notification[]
+}
+
+model Notification {
+  notificationId     String   @id @default(cuid())
+  userId             String
+  recognitionEventId String
+  feedbackEventId    String?
+  createDate         DateTime @default(now())
+
+  user             User             @relation(fields: [userId], references: [id])
+  recognitionEvent RecognitionEvent @relation(fields: [recognitionEventId], references: [recognitionId])
+  feedbackEvent    FeedbackEvent?   @relation(fields: [feedbackEventId], references: [feedbackEventId])
+}
+
+enum Role {
+  Admin
+  User
+  SuperAdmin
+}
