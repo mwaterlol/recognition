@@ -38,4 +38,4 @@ services:
         environment:
             - NEXT_PUBLIC_SUPABASE_URL=https://fytsfwgcxtlfjaugtwad.supabase.co
             - NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5dHNmd2djeHRsZmphdWd0d2FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI3MzIzMDYsImV4cCI6MjA0ODMwODMwNn0.NGizuVxMMbbtYMXb-FM_YD4sY4Yoe9XzK6NYp3ify7k
-            - NEXT_PUBLIC_BACKEND_API_URL=http://backend:3000
+            - NEXT_PUBLIC_BACKEND_API_URL=http://localhost:3000
