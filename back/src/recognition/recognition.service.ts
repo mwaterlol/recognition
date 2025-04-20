@@ -60,7 +60,7 @@ export class RecognitionService {
     formData.append('file', blob, file.originalname);
 
     const response = await axios.post<{ text: string }>(
-      'https://bba1vua4lf4q7qih259e.containers.yandexcloud.net/predict',
+      process.env.RECOGNITION_MODEL_URL,
       formData,
     );
     console.log(response);

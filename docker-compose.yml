@@ -24,6 +24,7 @@ services:
             - database
         environment:
             - DATABASE_URL=postgresql://myuser:mypassword@database:5432/databasename
+            - RECOGNITION_MODEL_URL=https://bba1vua4lf4q7qih259e.containers.yandexcloud.net/predict
 
     # Frontend service
     frontend:
