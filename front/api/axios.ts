@@ -12,7 +12,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     async function (config) {
-        console.log(process.env.NEXT_PUBLIC_BACKEND_API_URL);
+        console.log(config.baseURL);
         const token = Cookies.get("accessToken");
 
         if (token) {
