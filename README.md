@@ -1,5 +1,6 @@
-# recognition
+# Сервис для оцифровки старинных рукописей
 
-`cd recognition`
+Инструкция по запуску клиента и сервера:
+1. `cd recognition`
 
-`docker compose up -d`
+2. `docker compose up -d`
